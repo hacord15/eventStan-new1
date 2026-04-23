@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
+import CartDrawer from "@/components/ui/CartDrawer";
+import { CartProvider } from "@/lib/CartContext";
+
+export const metadata: Metadata = {
+  title: "EventStan - Find Perfect Event Vendors",
+  description: "Your one-stop marketplace for premium event services",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="bg-white font-sans antialiased">
+        <CartProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
+      </body>
+    </html>
+  );
+}
