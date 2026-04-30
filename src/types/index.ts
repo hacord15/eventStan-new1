@@ -69,3 +69,26 @@ export interface CartItem {
   pkg?: Package;
   service?: Service;
 }
+
+
+
+export interface Promotion {
+  id: string;
+  title: string;
+  vendor_name: string;
+  vendor_handle: string;
+  category: "Venue" | "Decor" | "Catering" | "Entertainment" | "Rentals";
+  image_url: string;
+  description: string;
+  short_desc: string;
+  price: number;
+  price_unit: string;
+  max_guests: number;
+  duration_hours: number;
+  inclusions: string[];
+  badge?: string;
+  is_featured?: boolean;
+  expires_at?: string;
+  original_price?: number;
+  service_id: string;
+}

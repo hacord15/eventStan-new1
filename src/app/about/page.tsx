@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20 px-4">
+      {/* <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block bg-orange-100 text-orange-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Our Story</span>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">We&apos;re on a Mission to Make Events Magical</h1>
@@ -26,6 +26,26 @@ export default function AboutPage() {
             EventStan was born from a simple frustration: planning events was too complicated, too stressful, and too fragmented. We built the platform we wished existed.
           </p>
         </div>
+      </section> */}
+
+
+<section
+        className="py-20 px-4 text-center"
+        style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #fff8f5 40%, #fffaf0 70%, #fff5e0 100%)' }}
+      >
+        <p className="text-xs font-semibold tracking-widest uppercase text-orange-600 mb-5">
+        Our Story
+        </p>
+        <h1 className="text-5xl font-bold leading-tight text-gray-900 mb-5 max-w-xl mx-auto">
+         We Make Every Event{' '}
+          <span className="text-orange-600">
+          Unforgettable
+          </span>
+        </h1>
+        <p className="text-base text-gray-500 max-w-md mx-auto leading-relaxed mb-9">
+        EventStan was born out of a simple belief — planning your perfect event shouldn't be stressful. We connect you with the finest venues, decorators, caterers, and entertainers in one seamless platform.
+        </p>
+      
       </section>
 
       {/* Stats */}

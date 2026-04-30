@@ -20,11 +20,77 @@ const WORKS = [
   "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80",
   "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80",
   "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=400&q=80",
-  "https://images.unsplash.com/photo-1561638763-7c9eee01d0d5?w=400&q=80",
+  "https://plus.unsplash.com/premium_photo-1683121131492-9ae8cdfea4f7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ];
 
 const PARTNERS = ["Hilton Hotels", "Marriott", "Four Seasons", "Hyatt", "IHG", "Ritz Carlton", "Wyndham", "Starwood", "Loews", "Omni", "InterContinental", "Fairmont"];
 
+// ─── Review Card ────────────────────────────────────────────────────────────
+function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
+  return (
+    <div className="w-[300px] shrink-0 bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow mx-3">
+      <div className="text-orange-400 text-3xl leading-none mb-3 font-serif">&ldquo;</div>
+      <p className="text-gray-600 text-sm mb-4 line-clamp-4">{review.comment}</p>
+      <div className="flex gap-0.5 mb-4">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <svg key={i} className={`w-4 h-4 ${i < review.rating ? "text-orange-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+      </div>
+      <div className="flex items-center gap-3">
+        <img src={review.reviewer_avatar} alt={review.reviewer_name} className="w-10 h-10 rounded-full object-cover" />
+        <div>
+          <div className="font-semibold text-sm text-gray-900">{review.reviewer_name}</div>
+          <div className="text-xs text-gray-400">{review.event_type} — {review.location}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Reviews Slider ──────────────────────────────────────────────────────────
+function ReviewsSlider() {
+  const [paused, setPaused] = useState(false);
+  const doubled = [...REVIEWS, ...REVIEWS];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
+    >
+      {/* Left fade */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10 bg-gradient-to-r from-gray-50 to-transparent" />
+      {/* Right fade */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10 bg-gradient-to-l from-gray-50 to-transparent" />
+
+      <div
+        className="flex"
+        style={{
+          animation: "reviewsScrollLeft 30s linear infinite",
+          animationPlayState: paused ? "paused" : "running",
+          width: "max-content",
+        }}
+      >
+        {doubled.map((review, i) => (
+          <ReviewCard key={`${review.id}-${i}`} review={review} />
+        ))}
+      </div>
+
+      <style jsx>{`
+        @keyframes reviewsScrollLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// ─── Landing Page ────────────────────────────────────────────────────────────
 export default function LandingPage() {
   const [search, setSearch] = useState("");
   const router = useRouter();
@@ -38,48 +104,54 @@ export default function LandingPage() {
   return (
     <div>
       {/* Hero */}
-      {/* <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0  bg-gradient-to-br from-orange-50 via-white via-rose-50/40 to-amber-50" />
-        <div className="absolute top-20 left-20 w-64 h-64 bg-orange-200 rounded-full blur-3xl opacity-30" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-amber-200 rounded-full blur-3xl opacity-30" />
-        <div className="absolute top-40 right-40 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-50" />
+      {/* <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-x-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white-20/10 via-rose-50/40 to-amber-50" />
+        <div className="absolute top-20 left-20 w-64 h-64 bg-orange-200/30 rounded-full blur-3xl opacity-30 max-sm:w-48 max-sm:h-48 max-sm:left-10 max-sm:top-10" />
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl opacity-30 max-sm:w-56 max-sm:h-56 max-sm:right-10 max-sm:bottom-10" />
+        <div className="absolute top-40 right-40 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-50 max-sm:w-32 max-sm:h-32 max-sm:right-5 max-sm:top-20" />
 
-        <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
-          <div className="inline-flex items-center gap-2 bg-white border border-orange-100 rounded-full px-4 py-2 text-sm text-orange-600 font-medium mb-6 shadow-sm">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+          <div className="inline-flex items-center gap-2 bg-white border border-orange-100 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-orange-600 font-medium mb-4 sm:mb-6 shadow-sm">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Your event, perfectly planned
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4 px-2">
             Find the Perfect{" "}
-            <span className="text-orange-500 relative">
+            <span className="text-orange-500 relative inline-block">
               Vendors
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
-                <path d="M0 6 Q100 0 200 6" stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
+                <path d="M0 6 Q100 0 200 6" stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" />
               </svg>
             </span>{" "}
             for Your Event
           </h1>
 
-          <p className="text-lg text-gray-500 mb-8 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-xl mx-auto px-2">
             Discover and book top-rated venues, decorators, caterers, and entertainers — all in one place.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-            <Link href="/services" className="bg-orange-500 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
+            <Link
+              href="/"
+              className="bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+            >
               Explore Services
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="/vendor-dashboard" className="border-2 border-gray-900 text-gray-900 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-colors">
+            <Link
+              href="/"
+              className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-colors text-sm sm:text-base text-center"
+            >
               List Your Service
             </Link>
           </div>
 
-          <form onSubmit={handleSearch} className="flex max-w-md mx-auto gap-2">
+          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 w-full px-4 sm:px-0">
             <div className="flex-1 relative">
               <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -89,16 +161,17 @@ export default function LandingPage() {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search vendors..."
                 className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-orange-400 bg-white"
+                aria-label="Search vendors"
               />
             </div>
-            <button type="submit" className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors">
+            <button type="submit" className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors sm:w-auto w-full">
               Search
             </button>
           </form>
 
-          <div className="flex items-center justify-center gap-6 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 mt-6 sm:mt-8 px-2">
             {[["500+", "Vendors"], ["1,200+", "Events"], ["4.9★", "Rating"]].map(([num, label]) => (
-              <div key={label} className="bg-white rounded-full px-5 py-2 shadow-sm border border-gray-100 text-sm">
+              <div key={label} className="bg-white rounded-full px-4 sm:px-5 py-1.5 sm:py-2 shadow-sm border border-gray-100 text-xs sm:text-sm whitespace-nowrap">
                 <span className="text-orange-500 font-bold">{num}</span>
                 <span className="text-gray-500 ml-1">{label}</span>
               </div>
@@ -107,135 +180,96 @@ export default function LandingPage() {
         </div>
       </section> */}
 
-  <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-x-hidden">
-      {/* Background gradients and blur elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white-20/10 via-rose-50/40 to-amber-50      "    />
-      <div className="absolute top-20 left-20 w-64 h-64  bg-orange-200/30 rounded-full blur-3xl opacity-30 max-sm:w-48 max-sm:h-48 max-sm:left-10 max-sm:top-10 " />
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl opacity-30 max-sm:w-56 max-sm:h-56 max-sm:right-10 max-sm:bottom-10" />
-      <div className="absolute top-40 right-40 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-50 max-sm:w-32 max-sm:h-32 max-sm:right-5 max-sm:top-20" />
+<section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-x-hidden">
 
-      <div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white border border-orange-100 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-orange-600 font-medium mb-4 sm:mb-6 shadow-sm">
-          <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          Your event, perfectly planned
-        </div>
+{/* Custom gradient background */}
+<div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(255,165,0,0.25),transparent_40%),radial-gradient(circle_at_20%_80%,rgba(255,200,150,0.2),transparent_40%),linear-gradient(135deg,#f8f5f2,#f3e9dc)]" />
 
-        {/* Main Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4 px-2">
-          Find the Perfect{" "} 
-          <span className="text-orange-500 relative inline-block">
-            Vendors
-            <svg
-              className="absolute -bottom-2 left-0 w-full"
-              viewBox="0 0 200 8"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0 6 Q100 0 200 6"
-                stroke="#f97316"
-                strokeWidth="2.5"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>{" "}
-         for Your Event
-        </h1>
+{/* Existing blobs */}
+<div className="absolute top-20 left-20 w-64 h-64 bg-orange-200/30 rounded-full blur-3xl opacity-30 max-sm:w-48 max-sm:h-48 max-sm:left-10 max-sm:top-10" />
+<div className="absolute bottom-20 right-20 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl opacity-30 max-sm:w-56 max-sm:h-56 max-sm:right-10 max-sm:bottom-10" />
+<div className="absolute top-40 right-40 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-50 max-sm:w-32 max-sm:h-32 max-sm:right-5 max-sm:top-20" />
 
-        {/* Subtitle */}
-        <p className="text-base sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-xl mx-auto px-2">
-          Discover and book top-rated venues, decorators, caterers, and
-          entertainers — all in one place.
-        </p>
+<div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+  <div className="inline-flex items-center gap-2 bg-white border border-orange-100 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-orange-600 font-medium mb-4 sm:mb-6 shadow-sm">
+    <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    Your event, perfectly planned
+  </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
-          <Link
-          href='/'
-            // href="/services"
-            className="bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
-          >
-            Explore Services
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-          <Link
-           href='/'
-            // href="/vendor-dashboard"
-            className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-colors text-sm sm:text-base text-center"
-          >
-            List Your Service
-          </Link>
-        </div>
+  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6 px-2">
+    Find the Perfect{" "}
+    <span className="text-orange-500 relative inline-block">
+      Vendors
+      <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
+        <path d="M0 6 Q100 0 200 6" stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+      </svg>
+    </span>{" "}
+    for Your Event
+  </h1>
 
-        {/* Search Form - Responsive column on mobile */}
-        <form
-          onSubmit={handleSearch}
-          className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 w-full px-4 sm:px-0"
-        >
-          <div className="flex-1 relative">
-            <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search vendors..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-orange-400 bg-white"
-              aria-label="Search vendors"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors sm:w-auto w-full"
-          >
-            Search
-          </button>
-        </form>
 
-        {/* Stats Pills - Responsive wrapping */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 mt-6 sm:mt-8 px-2">
-          {[
-            ["500+", "Vendors"],
-            ["1,200+", "Events"],
-            ["4.9★", "Rating"],
-          ].map(([num, label]) => (
-            <div
-              key={label}
-              className="bg-white rounded-full px-4 sm:px-5 py-1.5 sm:py-2 shadow-sm border border-gray-100 text-xs sm:text-sm whitespace-nowrap"
-            >
-              <span className="text-orange-500 font-bold">{num}</span>
-              <span className="text-gray-500 ml-1">{label}</span>
-            </div>
-          ))}
-        </div>
+
+  <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-6 sm:mb-8 max-w-xl mx-auto px-2">
+    Discover and book top-rated venues, decorators, caterers, and entertainers — all in one place.
+  </p>
+
+  <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
+    <Link
+      href="/services"
+      className="bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+    >
+      Explore Services
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </Link>
+
+    <Link
+      href="/vendor-dashboard"
+      className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-colors text-sm sm:text-base text-center"
+    >
+      List Your Service
+    </Link>
+  </div>
+
+  <form onSubmit={handleSearch} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 w-full px-4 sm:px-0">
+    <div className="flex-1 relative">
+      <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+
+      <input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search vendors..."
+        className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-orange-400 bg-white"
+        aria-label="Search vendors"
+      />
+    </div>
+
+    <button
+      type="submit"
+      className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors sm:w-auto w-full"
+    >
+      Search
+    </button>
+  </form>
+
+  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 mt-6 sm:mt-8 px-2">
+    {[["500+", "Vendors"], ["1,200+", "Events"], ["4.9★", "Rating"]].map(([num, label]) => (
+      <div
+        key={label}
+        className="bg-white rounded-full px-4 sm:px-5 py-1.5 sm:py-2 shadow-sm border border-gray-100 text-xs sm:text-sm whitespace-nowrap"
+      >
+        <span className="text-orange-500 font-bold">{num}</span>
+        <span className="text-gray-500 ml-1">{label}</span>
       </div>
-    </section>   
+    ))}
+  </div>
+</div>
+</section>
 
       {/* Categories */}
       <section className="py-12 px-4 max-w-7xl mx-auto">
@@ -313,36 +347,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
+      {/* Reviews — infinite auto-scroll slider */}
+      <section className="py-12 bg-gray-50 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 mb-8">
+          <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900">What Our Clients Say</h2>
             <p className="text-gray-500 mt-1">Real stories from real celebrations</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {REVIEWS.map((review) => (
-              <div key={review.id} className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="text-orange-400 text-2xl mb-3">&ldquo;&rdquo;</div>
-                <p className="text-gray-600 text-sm mb-4">{review.comment}</p>
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3">
-                  <img src={review.reviewer_avatar} alt={review.reviewer_name} className="w-10 h-10 rounded-full object-cover" />
-                  <div>
-                    <div className="font-semibold text-sm text-gray-900">{review.reviewer_name}</div>
-                    <div className="text-xs text-gray-400">{review.event_type} — {review.location}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
+        <ReviewsSlider />
       </section>
 
       {/* Partners */}

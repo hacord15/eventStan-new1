@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EventTypePills from "@/components/ui/EventTypePills";
 
 const EVENT_TYPES = [
   {
@@ -26,7 +27,7 @@ const EVENT_TYPES = [
     image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=700&q=80",
     gallery: [
       "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=400&q=80",
-      "https://images.unsplash.com/photo-1561638763-7c9eee01d0d5?w=400&q=80",
+      "https://plus.unsplash.com/premium_photo-1663839412165-0d60a57e7a91?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D%201287w",
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80",
     ],
     category: "Entertainment",
@@ -38,7 +39,7 @@ const EVENT_TYPES = [
     tagline: "Impress clients and inspire your team",
     description: "Professional corporate events demand professional execution. From product launches and annual galas to team offsites and conference dinners, our vendors deliver polished, on-brand experiences that reflect your company's values.",
     services: ["Conference & banquet halls", "AV & stage production", "Corporate catering & coffee stations", "Team building & entertainment"],
-    image: "https://images.unsplash.com/photo-1551038247-3d935814c9aa?w=700&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1723867267202-169dfe3b197a?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D%20871w",
     gallery: [
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&q=80",
       "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80",
@@ -83,7 +84,7 @@ const EVENT_TYPES = [
     tagline: "Honor the achievement, celebrate the future",
     description: "Graduation is one of life's greatest milestones. We help you throw a party as epic as the achievement — whether it's an intimate family dinner or a blowout celebration with friends, our vendors deliver unforgettable experiences.",
     services: ["Party venues & outdoor spaces", "Graduation-themed decor", "Full catering & BBQ setups", "Photo booths & entertainment"],
-    image: "https://images.unsplash.com/photo-1561638763-7c9eee01d0d5?w=700&q=80",
+    image: "https://images.unsplash.com/photo-1676054988250-bc5d81b610e4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     gallery: [
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80",
       "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80",
@@ -97,12 +98,30 @@ export default function EventTypesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-16 px-4 text-center">
+      {/* <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-16 px-4 text-center">
         <span className="inline-block bg-orange-100 text-orange-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">All Event Types</span>
         <h1 className="text-5xl font-bold text-gray-900 mb-3">Every Occasion, Perfectly Planned</h1>
         <p className="text-xl text-gray-500 max-w-2xl mx-auto">
           From intimate proposals to grand corporate galas, EventStan has expert vendors for every type of event.
         </p>
+      </section> */}
+      <section
+        className="py-20 px-4 text-center"
+        style={{ background: 'linear-gradient(135deg, #fff5f0 0%, #fff8f5 40%, #fffaf0 70%, #fff5e0 100%)' }}
+      >
+        <p className="text-xs font-semibold tracking-widest uppercase text-orange-600 mb-5">
+          What We Offer
+        </p>
+        <h1 className="text-5xl font-bold leading-tight text-gray-900 mb-5 max-w-xl mx-auto">
+          Every Event,{' '}
+          <span className="text-orange-600">
+            Expertly<br />Done
+          </span>
+        </h1>
+        <p className="text-base text-gray-500 max-w-md mx-auto leading-relaxed mb-9">
+          From weddings to corporate galas, baby showers to proposals — explore the types of events we specialize in and see the magic we've helped create.
+        </p>
+        <EventTypePills />
       </section>
 
       {/* Event Type Sections */}
@@ -161,14 +180,15 @@ export default function EventTypesPage() {
       {/* CTA */}
       <section className="py-12 px-4 max-w-4xl mx-auto">
         <div className="bg-orange-500 rounded-3xl p-10 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3">Don&apos;t See Your Event Type?</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">Ready to Plan Your Event?
+          </h2>
           <p className="text-orange-100 mb-6">We support hundreds of event types. Browse all our services or contact us directly.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/services" className="bg-white text-orange-500 px-7 py-3 rounded-full font-semibold hover:bg-orange-50">
+            {/* <Link href="/services" className="bg-white text-orange-500 px-7 py-3 rounded-full font-semibold hover:bg-orange-50">
               Browse All Services
-            </Link>
+            </Link> */}
             <Link href="/about" className="bg-gray-900 text-white px-7 py-3 rounded-full font-semibold hover:bg-gray-800">
-              Contact Us
+              View All Services
             </Link>
           </div>
         </div>

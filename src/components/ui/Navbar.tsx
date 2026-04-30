@@ -9,15 +9,21 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { toggleCart, count } = useCart();
 
+  // const links = [
+  //   { href: "/services", label: "Services" },
+  //   { href: "/event-types", label: "Event Types" },
+  //   { href: "/about", label: "About Us" },
+  //   { href: "/packages", label: "Packages" },
+  //   { href: "/bookings", label: "My Bookings" },
+  // ];
+
   const links = [
-    { href: "/services", label: "Services" },
+    { href: "/", label: "Services" },
     { href: "/event-types", label: "Event Types" },
     { href: "/about", label: "About Us" },
-    { href: "/packages", label: "Packages" },
+    { href: "/promotions", label: "Promotions" },
     { href: "/bookings", label: "My Bookings" },
   ];
-
-
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -69,7 +75,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Cart Button - improved touch target */}
             <button
-               onClick={toggleCart}
+              onClick={toggleCart}
               className="relative flex items-center gap-1.5 sm:gap-2 bg-gray-900 text-white px-3 sm:px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 active:scale-95 transition-all"
               aria-label="Open shopping cart"
             >
@@ -85,12 +91,14 @@ export default function Navbar() {
             </button>
 
             {/* Vendor Portal - desktop, hidden on mobile */}
-            <Link  
+            {/* <Link
               href="https://event-stan-vendor.vercel.app/vendor/dashboard"
               className="hidden sm:block border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:border-gray-400 transition-colors whitespace-nowrap"
             >
               Vendor Portal
-            </Link>
+
+              
+            </Link> */}
 
             {/* Mobile hamburger button - visible below md */}
             <button
@@ -100,64 +108,81 @@ export default function Navbar() {
               aria-expanded={menuOpen}
             >
               <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {menuOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                }
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
-
-        {/* Mobile menu with overlay and animation */}
-        {menuOpen && (
-          <>
-            {/* Backdrop overlay */}
-            <div
-              className="fixed inset-0 bg-black/20 z-40 md:hidden"
-              onClick={() => setMenuOpen(false)}
-              aria-hidden="true"
-            />
-            <div className="md:hidden absolute left-0 right-0 top-full bg-white border-b border-gray-100 shadow-lg z-50 py-2 px-4 animate-slideDown">
-              <div className="flex flex-col space-y-1">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="border-t border-gray-100 my-1"></div>
-                <Link
-                  href="https://event-stan-vendor.vercel.app/vendor/dashboard"
-                  className="block px-4 py-3 text-base font-medium text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Vendor Portal
-                </Link>
-              </div>
-            </div>
-          </>
-        )}
       </div>
 
-      {/* Add custom keyframe animation for mobile menu */}
+      {/* Mobile slide-in panel from right */}
+      {menuOpen && (
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/40 z-40 md:hidden"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Slide-in panel */}
+          <div className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-white z-50 md:hidden flex flex-col shadow-2xl animate-slideInRight">
+            {/* Close button */}
+            <div className="flex justify-end p-4">
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close menu"
+                className="w-9 h-9 rounded-full border-2 border-orange-400 flex items-center justify-center text-orange-500 hover:bg-orange-50 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Nav links */}
+            <div className="flex flex-col px-6 gap-1 flex-1">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`py-3.5 text-lg font-medium border-b border-gray-100 transition-colors ${
+                    pathname === link.href ? "text-orange-500" : "text-gray-800 hover:text-orange-500"
+                  }`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Vendor Portal CTA at bottom */}
+            {/* <div className="px-6 pb-10 pt-6">
+              <Link
+                href="https://event-stan-vendor.vercel.app/vendor/dashboard"
+                className="block w-full bg-orange-500 hover:bg-orange-600 text-white text-center py-3.5 rounded-full text-base font-semibold transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Vendor Portal
+              </Link>
+            </div> */}
+          </div>
+        </>
+      )}
+
       <style jsx>{`
-        @keyframes slideDown {
+        @keyframes slideInRight {
           from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateX(100%);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
           }
         }
-        .animate-slideDown {
-          animation: slideDown 0.2s ease-out;
+        .animate-slideInRight {
+          animation: slideInRight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
     </nav>
