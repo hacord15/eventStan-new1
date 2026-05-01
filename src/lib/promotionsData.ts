@@ -65,7 +65,7 @@ export const PROMOTIONS: Promotion[] = [
     vendor_name: "Grand Palace Events",
     vendor_handle: "grandpalace",
     category: "Venue",
-    image_url: "https://images.unsplash.com/photo-1551038247-3d935814c9aa?w=700&q=80",
+    image_url: "https://images.unsplash.com/photo-1775346098928-cab0ac41b9a2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "An exclusive wedding package inside our crystal chandelier ballroom. Accommodates up to 500 guests with marble flooring and full AV setup.",
     short_desc: "Crystal chandeliers, marble floors, capacity up to 500 guests.",
     price: 8500,

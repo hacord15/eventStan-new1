@@ -117,7 +117,7 @@ function PromotionCard({ promo, onBook }: { promo: Promotion; onBook: (p: Promot
           </span>
           <span className="flex items-center gap-1">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0114 0z"/>
             </svg>
             {promo.duration_hours}h
           </span>
@@ -202,66 +202,11 @@ function PromotionCard({ promo, onBook }: { promo: Promotion; onBook: (p: Promot
   );
 }
 
-function FeaturedBanner({ promo, onBook }: { promo: Promotion; onBook: (p: Promotion) => void }) {
-  const { addPackage, items } = useCart();
-  const inCart = items.some(i => i.id === `pkg-promo-${promo.id}`);
-  const savings = promo.original_price ? promo.original_price - promo.price : 0;
-
-  // return (
-  //   <div className="relative rounded-3xl overflow-hidden h-72 md:h-80 group cursor-pointer mb-8">
-  //     {/* <img src={promo.image_url} alt={promo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/> */}
-  //     <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"/>
-
-  //     {/* <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-12 max-w-2xl">
-  //       <div className="flex items-center gap-2 mb-3">
-  //         <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">🔥 Featured Deal</span>
-  //         {promo.original_price && <DiscountBadge original={promo.original_price} current={promo.price}/>}
-  //       </div>
-  //       <h2 className="text-white text-3xl md:text-4xl font-bold leading-tight mb-2">{promo.title}</h2>
-  //       <p className="text-white/70 text-sm mb-4 line-clamp-2">{promo.description}</p>
-
-  //       <div className="flex items-center gap-6 mb-5">
-  //         <div>
-  //           <span className="text-orange-400 text-3xl font-bold">${promo.price.toLocaleString()}</span>
-  //           <span className="text-white/60 text-sm ml-1">/ {promo.price_unit}</span>
-  //           {promo.original_price && (
-  //             <span className="text-white/40 text-sm line-through ml-2">${promo.original_price.toLocaleString()}</span>
-  //           )}
-  //         </div>
-  //         {savings > 0 && (
-  //           <div className="bg-green-500/20 border border-green-400/30 rounded-xl px-3 py-1.5">
-  //             <p className="text-green-400 text-xs font-semibold">Save ${savings.toLocaleString()}</p>
-  //           </div>
-  //         )}
-  //       </div>
-
-  //       <div className="flex gap-3">
-  //         <button
-  //           onClick={() => onBook(promo)}
-  //           className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all active:scale-95"
-  //         >
-  //           Book Now
-  //         </button>
-  //         <button
-  //           onClick={() => addPackage({ id: `promo-${promo.id}`, service_id: promo.service_id, title: promo.title, description: promo.short_desc, price: promo.price, inclusions: promo.inclusions, max_guests: promo.max_guests, duration_hours: promo.duration_hours })}
-  //           disabled={inCart}
-  //           className={`px-6 py-2.5 rounded-xl font-semibold text-sm border transition-all ${inCart ? "bg-green-500/20 border-green-400/30 text-green-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
-  //         >
-  //           {inCart ? "✓ In Cart" : "Add to Cart"}
-  //         </button>
-  //       </div>
-  //     </div> */}
-  //   </div>
-  // );
-}
-
 export default function PromotionsPage() {
   const [search,   setSearch]   = useState("");
   const [category, setCategory] = useState("All");
   const [sortBy,   setSortBy]   = useState("featured");
   const [booking,  setBooking]  = useState<Promotion | null>(null);
-
-  const featured = PROMOTIONS.filter(p => p.is_featured);
 
   const filtered = useMemo(() => {
     let result = PROMOTIONS.filter(p => {
@@ -290,11 +235,6 @@ export default function PromotionsPage() {
         <h1 className="text-4xl font-bold text-gray-900 mb-1">Promotions</h1>
         <p className="text-gray-500">Exclusive deals and special offers from top vendors — limited time, fixed price</p>
       </div>
-
-      {/* Featured banner — top deal */}
-      {featured[0] && category === "All" && !search && (
-        <FeaturedBanner promo={featured[0]} onBook={setBooking}/>
-      )}
 
       {/* Filters bar */}
       <div className="flex flex-col sm:flex-row gap-3 mb-5">

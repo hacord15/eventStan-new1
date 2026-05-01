@@ -4,6 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import CartDrawer from "@/components/ui/CartDrawer";
 import { CartProvider } from "@/lib/CartContext";
+import { AuthProvider } from "@/lib/AuthContext";
 
 export const metadata: Metadata = {
   title: "EventStan - Find Perfect Event Vendors",
@@ -14,12 +15,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className="bg-white font-sans antialiased">
-        <CartProvider>
+        <AuthProvider>
+          <CartProvider>
           <Navbar />
           <main>{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>
+        </AuthProvider>
+        
       </body>
     </html>
   );
