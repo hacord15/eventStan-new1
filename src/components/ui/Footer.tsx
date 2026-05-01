@@ -154,7 +154,7 @@ export default function Footer() {
               <li className="break-all">hello@eventstan.com</li>
               <li>+1 (555) 000-0000</li>
               <li className="pt-2">
-                <div className="flex justify-center sm:justify-start gap-4">
+                {/* <div className="flex justify-center sm:justify-start gap-4">
                   {["twitter", "instagram", "linkedin"].map((s) => (
                     <a
                       key={s}
@@ -167,7 +167,7 @@ export default function Footer() {
                       </svg>
                     </a>
                   ))}
-                </div>
+                </div> */}
               </li>
             </ul>
           </div>

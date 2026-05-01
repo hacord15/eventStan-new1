@@ -290,7 +290,7 @@ export default function LandingPage() {
       </section>
 
       {/* Featured Services */}
-      {/* <section className="py-8 px-4 max-w-7xl mx-auto">
+      <section className="py-8 px-4 max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-6">
           <div>
             <h2 className="text-3xl font-bold text-gray-900">Featured Services</h2>
@@ -305,7 +305,7 @@ export default function LandingPage() {
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
-      </section> */}
+      </section>
 
       {/* How It Works */}
       <section className="py-12 px-4 bg-gray-50">

@@ -196,6 +196,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "@/lib/CartContext";
 import { useAuth } from "@/lib/AuthContext";
+import Image from 'next/image'; // Import the Image component
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -248,14 +249,26 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
+          {/* <Link href="/D:\Office\Projects\eventstan vercel\eventstan\public\eventstan-logo.png" className="flex items-center gap-2 shrink-0">
             <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
               </svg>
             </div>
             <span className="text-lg sm:text-xl font-bold text-gray-900">EventStan</span>
-          </Link>
+          </Link> */}
+           
+           <Link href="/" className="flex items-center shrink-0">
+  <Image
+    src="/eventstan-logo.png"
+    alt="EventStan Logo"
+    width={180}      // 48px (was 32)
+    height={48}     // 48px (was 32)
+    className="rounded-lg"
+    priority
+  />
+</Link>
+          
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
