@@ -66,7 +66,7 @@ export default function ServiceCard({ service }: Props) {
         </div>
 
         {/* Add to Cart button */}
-        <button
+        {/* <button
           onClick={handleAddToCart}
           disabled={inCart}
           className={`w-full py-2 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2 ${
@@ -90,7 +90,7 @@ export default function ServiceCard({ service }: Props) {
               {justAdded ? "Added!" : "Add to Cart"}
             </>
           )}
-        </button>
+        </button> */}
       </div>
     </div>
   );
