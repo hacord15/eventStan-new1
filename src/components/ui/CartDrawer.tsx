@@ -30,6 +30,18 @@ export default function CartDrawer() {
 
   useEffect(() => setMounted(true), []);
 
+  useEffect(() => {
+    const missing = items
+      .filter((i) => !(typeof i.image_url === "string" && i.image_url.trim()))
+      .map((i) => ({ itemId: i.id, title: i.title, type: i.type }));
+
+    if (missing.length === 0) return;
+
+    // #region agent log
+    fetch('http://127.0.0.1:7390/ingest/a3e994ce-a9eb-43f3-b313-113a0ac6b299',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'55dc61'},body:JSON.stringify({sessionId:'55dc61',runId:'pre-fix',hypothesisId:'H-I',location:'src/components/ui/CartDrawer.tsx:useEffect',message:'Cart has items with missing image_url',data:{count:missing.length,missing},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+  }, [items]);
+
   // Reset to cart step when drawer closes
   useEffect(() => {
     if (!isOpen) {
@@ -329,7 +341,11 @@ export default function CartDrawer() {
               <div className="w-full space-y-2 mb-5">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3 text-left">
-                    <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
+                    {typeof item.image_url === "string" && item.image_url.trim() ? (
+                      <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
+                    ) : (
+                      <div className="w-10 h-10 rounded-lg bg-gray-200 flex-shrink-0" aria-hidden />
+                    )}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-gray-900 truncate">{item.title}</p>
                       <p className="text-xs text-gray-400 truncate">{item.subtitle}</p>
@@ -361,7 +377,11 @@ function CartItemRow({ item, onRemove }: { item: CartItem; onRemove: () => void 
   return (
     <div className="flex gap-3 bg-gray-50 rounded-2xl p-3 group hover:bg-orange-50 transition-colors">
       <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
-        <img src={item.image_url} alt={item.title} className="w-full h-full object-cover" />
+        {typeof item.image_url === "string" && item.image_url.trim() ? (
+          <img src={item.image_url} alt={item.title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full bg-gray-200" aria-hidden />
+        )}
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">

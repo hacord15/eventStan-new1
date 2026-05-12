@@ -1,0 +1,3 @@
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1778571716774}
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1778571744756}
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/services/6"},"timestamp":1778572093935}

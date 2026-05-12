@@ -8,36 +8,36 @@ import PreviousWorks from "@/components/PreviousWorks";
 import PartnerMarquee from "@/components/PartnerMarquee";
 
 const CATEGORY_DATA = [
-  { name: "Venue", desc: "Halls, gardens, resorts & unique spaces", icon: "🏛️", img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&q=80" },
-  { name: "Decor", desc: "Themes, florals, lighting & staging", icon: "🌸", img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=80" },
-  { name: "Catering", desc: "Cuisines, buffets, desserts & bars", icon: "🍽️", img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80" },
-  { name: "Entertainment", desc: "DJs, bands, performers & MCs", icon: "🎵", img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80" },
-];
-
-const WORKS = [
-  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=80",
-  "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80",
-  "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80",
-  "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80",
-  "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80",
-  "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=400&q=80",
-  "https://plus.unsplash.com/premium_photo-1683121131492-9ae8cdfea4f7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-];
-
-// const PARTNERS = ["Hilton Hotels", "Marriott", "Four Seasons", "Hyatt", "IHG", "Ritz Carlton", "Wyndham", "Starwood", "Loews", "Omni", "InterContinental", "Fairmont"];
-const PARTNERS = [
-  { name: "Hilton Hotels", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Hilton_Hotels_%26_Resorts_logo.svg/512px-Hilton_Hotels_%26_Resorts_logo.svg.png" },
-  { name: "Marriott", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Marriott_logo.svg/512px-Marriott_logo.svg.png" },
-  { name: "Four Seasons", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Four_Seasons_Hotels_and_Resorts_logo.svg/512px-Four_Seasons_Hotels_and_Resorts_logo.svg.png" },
-  { name: "Hyatt", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Hyatt_Logo.svg/512px-Hyatt_Logo.svg.png" },
-  { name: "IHG", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/IHG_Hotels_%26_Resorts_logo.svg/512px-IHG_Hotels_%26_Resorts_logo.svg.png" },
-  { name: "Ritz Carlton", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/The_Ritz_Carlton_Logo.svg/512px-The_Ritz_Carlton_Logo.svg.png" },
-  { name: "Wyndham", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Wyndham_Hotels_%26_Resorts_logo.svg/512px-Wyndham_Hotels_%26_Resorts_logo.svg.png" },
-  { name: "Loews", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Loews_Hotels_logo.svg/512px-Loews_Hotels_logo.svg.png" },
-  { name: "Omni", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Omni_Hotels_logo.svg/512px-Omni_Hotels_logo.svg.png" },
-  { name: "InterContinental", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/InterContinental_Hotels_Group_logo.svg/512px-InterContinental_Hotels_Group_logo.svg.png" },
-  { name: "Fairmont", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Fairmont_Hotels_and_Resorts_logo.svg/512px-Fairmont_Hotels_and_Resorts_logo.svg.png" },
+  { 
+    name: "Venue", 
+    desc: "Halls, gardens, resorts & unique spaces", 
+    icon: "🏛️", 
+    img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&q=80" 
+  },
+  { 
+    name: "Decor", 
+    desc: "Themes, florals, lighting & staging", 
+    icon: "🌸", 
+    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=80" 
+  },
+  { 
+    name: "Catering", 
+    desc: "Cuisines, buffets, desserts & bars", 
+    icon: "🍽️", 
+    img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80" 
+  },
+  { 
+    name: "Entertainment", 
+    desc: "DJs, bands, performers & MCs", 
+    icon: "🎵", 
+    img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80" 
+  },
+  { 
+    name: "Rentals", 
+    desc: "Furniture, tents, sound systems & event essentials", 
+    icon: "🪑", 
+    img: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=400&q=80" 
+  }
 ];
 
 // ─── Review Card ────────────────────────────────────────────────────────────
@@ -119,82 +119,6 @@ export default function LandingPage() {
   return (
     <div>
       {/* Hero */}
-      {/* <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-x-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white-20/10 via-rose-50/40 to-amber-50" />
-        <div className="absolute top-20 left-20 w-64 h-64 bg-orange-200/30 rounded-full blur-3xl opacity-30 max-sm:w-48 max-sm:h-48 max-sm:left-10 max-sm:top-10" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl opacity-30 max-sm:w-56 max-sm:h-56 max-sm:right-10 max-sm:bottom-10" />
-        <div className="absolute top-40 right-40 w-40 h-40 bg-orange-100 rounded-full blur-2xl opacity-50 max-sm:w-32 max-sm:h-32 max-sm:right-5 max-sm:top-20" />
-
-        <div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <div className="inline-flex items-center gap-2 bg-white border border-orange-100 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-orange-600 font-medium mb-4 sm:mb-6 shadow-sm">
-            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Your event, perfectly planned
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4 px-2">
-            Find the Perfect{" "}
-            <span className="text-orange-500 relative inline-block">
-              Vendors
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
-                <path d="M0 6 Q100 0 200 6" stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>{" "}
-            for Your Event
-          </h1>
-
-          <p className="text-base sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-xl mx-auto px-2">
-            Discover and book top-rated venues, decorators, caterers, and entertainers — all in one place.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 px-4 sm:px-0">
-            <Link
-              href="/"
-              className="bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
-            >
-              Explore Services
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/"
-              className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-colors text-sm sm:text-base text-center"
-            >
-              List Your Service
-            </Link>
-          </div>
-
-          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 w-full px-4 sm:px-0">
-            <div className="flex-1 relative">
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search vendors..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-orange-400 bg-white"
-                aria-label="Search vendors"
-              />
-            </div>
-            <button type="submit" className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors sm:w-auto w-full">
-              Search
-            </button>
-          </form>
-
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 mt-6 sm:mt-8 px-2">
-            {[["500+", "Vendors"], ["1,200+", "Events"], ["4.9★", "Rating"]].map(([num, label]) => (
-              <div key={label} className="bg-white rounded-full px-4 sm:px-5 py-1.5 sm:py-2 shadow-sm border border-gray-100 text-xs sm:text-sm whitespace-nowrap">
-                <span className="text-orange-500 font-bold">{num}</span>
-                <span className="text-gray-500 ml-1">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-x-hidden">
 
         {/* Custom gradient background */}
@@ -288,7 +212,7 @@ export default function LandingPage() {
 
       {/* Categories */}
       <section className="py-12 px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {CATEGORY_DATA.map((cat) => (
             <Link key={cat.name} href={`/services?category=${cat.name}`}>
               <div className="relative rounded-2xl overflow-hidden h-44 group cursor-pointer">
@@ -347,20 +271,6 @@ export default function LandingPage() {
       </section>
 
       {/* Previous Works */}
-      {/* <section className="py-12 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Our Previous Works</h2>
-          <p className="text-gray-500 mt-1">A glimpse into the magical events we&apos;ve helped create</p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {WORKS.map((img, i) => (
-            <div key={i} className="relative overflow-hidden rounded-2xl aspect-square group cursor-pointer">
-              <img src={img} alt={`Work ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-            </div>
-          ))}
-        </div>
-      </section> */}
       <PreviousWorks />
 
       {/* Reviews — infinite auto-scroll slider */}
@@ -375,64 +285,7 @@ export default function LandingPage() {
       </section>
 
       {/* Partners */}
- 
-<PartnerMarquee />
-
-  
-
-  {/* <section className="py-10 overflow-hidden border-y border-border/40 bg-muted/20">
-  <div className="text-center mb-6">
-    <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">Trusted By</p>
-    <h2 className="text-2xl font-bold text-gray-900">Our Clients & Vendor Partners</h2>
-  </div>
-
-  <div className="relative group/marquee">
-    <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-muted/20 to-transparent" />
-    <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-muted/20 to-transparent" />
-
-    <div className="flex overflow-hidden">
-      <div className="flex items-center gap-8 animate-marquee" style={{ width: "max-content" }}>
-        {[...PARTNERS, ...PARTNERS].map((partner, i) => (
-          <a
-            key={i}
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center justify-center px-6 py-4 rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 shrink-0 group"
-            style={{ minWidth: "140px" }}
-          >
-            <img
-              src={partner.logo}
-              alt={partner.name}
-              className="h-9 w-auto object-contain transition-all duration-300"
-              style={{
-                filter: 'grayscale(100%) opacity(0.5)',
-                transition: 'filter 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = 'grayscale(0%) opacity(1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = 'grayscale(100%) opacity(0.5)';
-              }}
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.style.display = "none";
-                const span = document.createElement("span");
-                span.className = "text-sm font-semibold text-gray-400 whitespace-nowrap";
-                span.textContent = partner.name;
-                target.parentElement?.appendChild(span);
-              }}
-            />
-          </a>
-        ))}
-      </div>
-    </div>
-  </div>
-</section> */}
-
-
-
-
+      <PartnerMarquee />
 
     {/* CTA */ }
     <section className = "py-12 px-4 max-w-5xl mx-auto" >

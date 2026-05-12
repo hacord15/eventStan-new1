@@ -1,222 +1,37 @@
-// "use client";
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import { useState, useEffect } from "react";
-// import { useCart } from "@/lib/CartContext";
-
-// export default function Navbar() {
-//   const pathname = usePathname();
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   const { toggleCart, count } = useCart();
-
-//   // const links = [
-//   //   { href: "/services", label: "Services" },
-//   //   { href: "/event-types", label: "Event Types" },
-//   //   { href: "/about", label: "About Us" },
-//   //   { href: "/packages", label: "Packages" },
-//   //   { href: "/bookings", label: "My Bookings" },
-//   // ];
-
-//   const links = [
-//     { href: "/", label: "Services" },
-//     { href: "/event-types", label: "Event Types" },
-//     { href: "/about", label: "About Us" },
-//     { href: "/promotions", label: "Promotions" },
-//     { href: "/bookings", label: "My Bookings" },
-//   ];
-
-//   // Close mobile menu when route changes
-//   useEffect(() => {
-//     setMenuOpen(false);
-//   }, [pathname]);
-
-//   // Prevent body scroll when mobile menu is open
-//   useEffect(() => {
-//     if (menuOpen) {
-//       document.body.style.overflow = "hidden";
-//     } else {
-//       document.body.style.overflow = "";
-//     }
-//     return () => {
-//       document.body.style.overflow = "";
-//     };
-//   }, [menuOpen]);
-
-//   return (
-//     <nav className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex items-center justify-between h-16 sm:h-20">
-//           {/* Logo - responsive sizing */}
-//           <Link href="/" className="flex items-center gap-2 shrink-0">
-//             <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-//               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-//               </svg>
-//             </div>
-//             <span className="text-lg sm:text-xl font-bold text-gray-900">EventStan</span>
-//           </Link>
-
-//           {/* Desktop Links - visible from md (768px) */}
-//           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-//             {links.map((link) => (
-//               <Link
-//                 key={link.href}
-//                 href={link.href}
-//                 className={`text-sm font-medium transition-colors whitespace-nowrap ${
-//                   pathname === link.href ? "text-orange-500" : "text-gray-600 hover:text-orange-500"
-//                 }`}
-//               >
-//                 {link.label}
-//               </Link>
-//             ))}
-//           </div>
-
-//           {/* Right side actions */}
-//           <div className="flex items-center gap-2 sm:gap-3">
-//             {/* Cart Button - improved touch target */}
-//             <button
-//               onClick={toggleCart}
-//               className="relative flex items-center gap-1.5 sm:gap-2 bg-gray-900 text-white px-3 sm:px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 active:scale-95 transition-all"
-//               aria-label="Open shopping cart"
-//             >
-//               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-//               </svg>
-//               <span className="hidden sm:inline">Cart</span>
-//               {count > 0 && (
-//                 <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
-//                   {count > 9 ? "9+" : count}
-//                 </span>
-//               )}
-//             </button>
-
-//             {/* Vendor Portal - desktop, hidden on mobile */}
-//             {/* <Link
-//               href="https://event-stan-vendor.vercel.app/vendor/dashboard"
-//               className="hidden sm:block border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:border-gray-400 transition-colors whitespace-nowrap"
-//             >
-//               Vendor Portal
-
-              
-//             </Link> */}
-
-//             {/* Mobile hamburger button - visible below md */}
-//             <button
-//               className="md:hidden p-2 -mr-2 rounded-lg hover:bg-gray-100 transition-colors"
-//               onClick={() => setMenuOpen(!menuOpen)}
-//               aria-label={menuOpen ? "Close menu" : "Open menu"}
-//               aria-expanded={menuOpen}
-//             >
-//               <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-//               </svg>
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile slide-in panel from right */}
-//       {menuOpen && (
-//         <>
-//           {/* Backdrop overlay */}
-//           <div
-//             className="fixed inset-0 bg-black/40 z-40 md:hidden"
-//             onClick={() => setMenuOpen(false)}
-//             aria-hidden="true"
-//           />
-
-//           {/* Slide-in panel */}
-//           <div className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-white z-50 md:hidden flex flex-col shadow-2xl animate-slideInRight">
-//             {/* Close button */}
-//             <div className="flex justify-end p-4">
-//               <button
-//                 onClick={() => setMenuOpen(false)}
-//                 aria-label="Close menu"
-//                 className="w-9 h-9 rounded-full border-2 border-orange-400 flex items-center justify-center text-orange-500 hover:bg-orange-50 transition-colors"
-//               >
-//                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-//                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-//                 </svg>
-//               </button>
-//             </div>
-
-//             {/* Nav links */}
-//             <div className="flex flex-col px-6 gap-1 flex-1">
-//               {links.map((link) => (
-//                 <Link
-//                   key={link.href}
-//                   href={link.href}
-//                   className={`py-3.5 text-lg font-medium border-b border-gray-100 transition-colors ${
-//                     pathname === link.href ? "text-orange-500" : "text-gray-800 hover:text-orange-500"
-//                   }`}
-//                   onClick={() => setMenuOpen(false)}
-//                 >
-//                   {link.label}
-//                 </Link>
-//               ))}
-//             </div>
-
-//             {/* Vendor Portal CTA at bottom */}
-//             {/* <div className="px-6 pb-10 pt-6">
-//               <Link
-//                 href="https://event-stan-vendor.vercel.app/vendor/dashboard"
-//                 className="block w-full bg-orange-500 hover:bg-orange-600 text-white text-center py-3.5 rounded-full text-base font-semibold transition-colors"
-//                 onClick={() => setMenuOpen(false)}
-//               >
-//                 Vendor Portal
-//               </Link>
-//             </div> */}
-//           </div>
-//         </>
-//       )}
-
-//       <style jsx>{`
-//         @keyframes slideInRight {
-//           from {
-//             opacity: 0;
-//             transform: translateX(100%);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateX(0);
-//           }
-//         }
-//         .animate-slideInRight {
-//           animation: slideInRight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-//         }
-//       `}</style>
-//     </nav>
-//   );
-// }
-
-
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "@/lib/CartContext";
 import { useAuth } from "@/lib/AuthContext";
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const router   = useRouter();
+  const router = useRouter();
   const { toggleCart, count } = useCart();
   const { user, logout, loading } = useAuth();
 
-  const [menuOpen,     setMenuOpen]     = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [userDropOpen, setUserDropOpen] = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
 
   const links = [
-    { href: "/services",    label: "Services"    },
+    { href: "/services", label: "Services" },
     { href: "/event-types", label: "Event Types" },
-    { href: "/about",       label: "About Us"    },
-    { href: "/promotions",  label: "Promotions"  },
-    { href: "/bookings",    label: "My Bookings" },
+    { href: "/about", label: "About Us" },
+    { href: "/promotions", label: "Promotions" },
+    { href: "/bookings", label: "My Bookings" },
   ];
 
   useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  useEffect(() => {
+    // #region agent log
+    fetch('http://127.0.0.1:7390/ingest/a3e994ce-a9eb-43f3-b313-113a0ac6b299',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'55dc61'},body:JSON.stringify({sessionId:'55dc61',runId:'pre-fix',hypothesisId:'H-F',location:'src/components/ui/Navbar.tsx:Navbar',message:'Navbar mounted (client) — ingest reachability check',data:{pathname},timestamp:Date.now()})}).catch(()=>{});
+    fetch('/api/debug-log',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:'55dc61',runId:'pre-fix',hypothesisId:'H-F2',location:'src/components/ui/Navbar.tsx:Navbar',message:'Navbar mounted (client) — same-origin debug log',data:{pathname},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -240,7 +55,7 @@ export default function Navbar() {
   };
 
   const avatarColor = user
-    ? ["bg-orange-500","bg-blue-500","bg-green-500","bg-purple-500","bg-pink-500"][user.name.charCodeAt(0) % 5]
+    ? ["bg-orange-500", "bg-blue-500", "bg-green-500", "bg-purple-500", "bg-pink-500"][user.name.charCodeAt(0) % 5]
     : "bg-orange-500";
 
   return (
@@ -248,35 +63,25 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo */}
-          {/* <Link href="/D:\Office\Projects\eventstan vercel\eventstan\public\eventstan-logo.png" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-              </svg>
-            </div>
-            <span className="text-lg sm:text-xl font-bold text-gray-900">EventStan</span>
-          </Link> */}
-           
-           <Link href="/" className="flex items-center shrink-0">
-  <Image
-    src="/eventstan-logo.png"
-    alt="EventStan Logo"
-    width={180}      // 48px (was 32)
-    height={48}     // 48px (was 32)
-    className="rounded-lg"
-    priority
-  />
-</Link>
-          
+          <Link href="/" className="flex items-center shrink-0">
+            <Image
+              src="/eventstan-logo.png"
+              alt="EventStan Logo"
+              width={180}      
+              height={48}     
+              className="rounded-lg w-auto h-auto"
+              style={{ width: "auto", height: "auto" }}
+              priority
+            />
+          </Link>
+
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
             {links.map(link => (
               <Link key={link.href} href={link.href}
-                className={`text-sm font-medium transition-colors whitespace-nowrap ${
-                  pathname === link.href ? "text-orange-500" : "text-gray-600 hover:text-orange-500"
-                }`}>
+                className={`text-sm font-medium transition-colors whitespace-nowrap ${pathname === link.href ? "text-orange-500" : "text-gray-600 hover:text-orange-500"
+                  }`}>
                 {link.label}
               </Link>
             ))}
@@ -290,7 +95,7 @@ export default function Navbar() {
               className="relative flex items-center gap-1.5 sm:gap-2 bg-gray-900 text-white px-3 sm:px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 active:scale-95 transition-all"
               aria-label="Open shopping cart">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               <span className="hidden sm:inline">Cart</span>
               {count > 0 && (
@@ -319,7 +124,7 @@ export default function Navbar() {
                       <p className="text-xs text-gray-400 capitalize leading-none mt-0.5">{user.type}</p>
                     </div>
                     <svg className={`w-3.5 h-3.5 text-gray-400 transition-transform ${userDropOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
 
@@ -342,13 +147,13 @@ export default function Navbar() {
                       {/* Links */}
                       <div className="py-1">
                         {[
-                          { href: "/bookings", label: "My Bookings",  icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" },
-                          { href: "/",         label: "Browse Events", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
+                          { href: "/bookings", label: "My Bookings", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" },
+                          { href: "/", label: "Browse Events", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
                         ].map(item => (
                           <Link key={item.href} href={item.href} onClick={() => setUserDropOpen(false)}
                             className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-orange-500 transition-colors">
                             <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon}/>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                             </svg>
                             {item.label}
                           </Link>
@@ -359,7 +164,7 @@ export default function Navbar() {
                         <button onClick={handleLogout}
                           className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition-colors">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                           </svg>
                           Sign Out
                         </button>
@@ -386,7 +191,7 @@ export default function Navbar() {
             <button className="md:hidden p-2 -mr-2 rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">
               <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -396,13 +201,13 @@ export default function Navbar() {
       {/* Mobile slide-in panel */}
       {menuOpen && (
         <>
-          <div className="fixed inset-0 bg-black/40 z-40 md:hidden" onClick={() => setMenuOpen(false)} aria-hidden/>
+          <div className="fixed inset-0 bg-black/40 z-40 md:hidden" onClick={() => setMenuOpen(false)} aria-hidden />
           <div className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-white z-50 md:hidden flex flex-col shadow-2xl animate-slideInRight">
             <div className="flex justify-end p-4">
               <button onClick={() => setMenuOpen(false)}
                 className="w-9 h-9 rounded-full border-2 border-orange-400 flex items-center justify-center text-orange-500 hover:bg-orange-50 transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -436,7 +241,7 @@ export default function Navbar() {
                 <button onClick={() => { handleLogout(); setMenuOpen(false); }}
                   className="w-full flex items-center justify-center gap-2 border border-red-200 text-red-500 py-3 rounded-full text-sm font-semibold hover:bg-red-50 transition-colors">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
                   Sign Out
                 </button>

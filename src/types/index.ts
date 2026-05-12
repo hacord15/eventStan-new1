@@ -86,6 +86,10 @@ export interface Promotion {
   max_guests: number;
   duration_hours: number;
   inclusions: string[];
+  vendor_email?: string;
+  vendor_phone?: string;
+  min_days?: number;
+  max_days?: number;
   badge?: string;
   is_featured?: boolean;
   expires_at?: string;

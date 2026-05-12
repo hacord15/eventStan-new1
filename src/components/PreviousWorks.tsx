@@ -25,9 +25,9 @@ const WORKS = [
   },
   {
     category: "Corporate",
-    cover: "https://images.unsplash.com/photo-1551038247-3d935814c9aa?w=700&q=80",
+    cover: "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=900&q=80",
     images: [
-      "https://images.unsplash.com/photo-1551038247-3d935814c9aa?w=900&q=80",
+      "https://plus.unsplash.com/premium_photo-1723867267…xMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80",
       "https://images.unsplash.com/photo-1555244162-803834f70033?w=900&q=80",
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&q=80",
@@ -55,7 +55,7 @@ const WORKS = [
   },
   {
     category: "Graduations",
-    cover: "https://images.unsplash.com/photo-1561638763-7c9eee01d0d5?w=700&q=80",
+    cover: "https://images.unsplash.com/photo-1555244162-803834f70033?w=900&q=80",
     images: [
       "https://images.unsplash.com/photo-1561638763-7c9eee01d0d5?w=900&q=80",
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&q=80",
