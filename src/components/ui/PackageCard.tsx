@@ -179,7 +179,7 @@ export default function PackageCard({ pkg, service, onBook }: Props) {
               ))}
             </ul>
           )}
-
+           
           {/* Price + Actions */}
           <div className="mt-auto">
             <div className="mb-3">
