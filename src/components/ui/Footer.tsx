@@ -133,6 +133,7 @@ export default function Footer() {
                 { href: "/bookings", label: "My Bookings" },
                 { href: "/vendor-dashboard", label: "Vendor Portal" },
                 { href: "/about", label: "About Us" },
+                { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link 
