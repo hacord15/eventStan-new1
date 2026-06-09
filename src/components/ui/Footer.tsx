@@ -80,40 +80,51 @@
 //   );
 // }
 
-
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gray-950 text-gray-400">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Grid: 1 column on mobile, 4 columns on desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-          
           {/* Brand Section */}
           <div className="col-span-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
-              <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+              {/* <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-white">EventStan</span>
+              <span className="text-xl font-bold text-white">EventStan</span> */}
+              <Link href="/" className="flex items-center shrink-0">
+                <Image
+                  src="/eventstan-logo-white.png"
+                  alt="EventStan Logo"
+                  width={180}
+                  height={48}
+                  className="rounded-lg w-auto h-auto"
+                  style={{ width: "auto", height: "auto" }}
+                  priority
+                />
+              </Link>
             </div>
             <p className="text-sm leading-relaxed max-w-xs mx-auto sm:mx-0">
-              Your one-stop marketplace for premium event services. Find the perfect vendors for your special occasions.
+              Your one-stop marketplace for premium event services. Find the
+              perfect vendors for your special occasions.
             </p>
           </div>
 
           {/* Categories Section */}
           <div className="text-center sm:text-left">
-            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">Categories</h4>
+            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">
+              Categories
+            </h4>
             <ul className="space-y-3 text-sm">
               {["Venues", "Decor", "Catering", "Entertainment"].map((cat) => (
                 <li key={cat}>
-                  <Link 
-                  
-                    href={`/services?category=${cat.replace(/s$/, "")}`} 
+                  <Link
+                    href={`/services?category=${cat.replace(/s$/, "")}`}
                     className="hover:text-orange-400 transition-colors block py-0.5"
                   >
                     {cat}
@@ -125,7 +136,9 @@ export default function Footer() {
 
           {/* Quick Links Section */}
           <div className="text-center sm:text-left">
-            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">
+              Quick Links
+            </h4>
             <ul className="space-y-3 text-sm">
               {[
                 { href: "/services", label: "Browse Services" },
@@ -135,8 +148,8 @@ export default function Footer() {
                 { href: "/about", label: "About Us" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="hover:text-orange-400 transition-colors block py-0.5"
                   >
                     {link.label}
@@ -144,12 +157,13 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-           
           </div>
 
           {/* Contact Section */}
           <div className="text-center sm:text-left">
-            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">Contact</h4>
+            <h4 className="text-white font-semibold mb-4 text-base sm:text-lg">
+              Contact
+            </h4>
             <ul className="space-y-3 text-sm">
               <li className="break-all">hello@eventstan.com</li>
               <li>+1 (555) 000-0000</li>
