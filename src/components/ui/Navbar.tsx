@@ -22,7 +22,7 @@ export default function Navbar() {
     { href: "/about", label: "About Us" },
     { href: "/promotions", label: "Promotions" },
     { href: "/bookings", label: "My Bookings" },
-    { href: "/blog", label: "Blog" },
+    // { href: "/blog", label: "Blog" },
   ];
 
   useEffect(() => { setMenuOpen(false); }, [pathname]);
