@@ -303,7 +303,7 @@ export default function BlogDetailPage({ params }: PageProps) {
             More Articles
           </Link>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }

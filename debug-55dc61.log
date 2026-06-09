@@ -78,3 +78,4 @@
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780989722734}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780989734308}
 >>>>>>> 329e60b47442442770c46c878c06ae27399e9b77
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780991622170}
