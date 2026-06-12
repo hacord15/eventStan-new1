@@ -82,6 +82,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-950 text-gray-400">
@@ -146,7 +148,7 @@ export default function Footer() {
                 { href: "/bookings", label: "My Bookings" },
                 { href: "/vendor-dashboard", label: "Vendor Portal" },
                 { href: "/about", label: "About Us" },
-                { href: "/contact", label: "Contact" },
+                // { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -169,20 +171,36 @@ export default function Footer() {
               <li className="break-all">hello@eventstan.com</li>
               <li>+1 (555) 000-0000</li>
               <li className="pt-2">
-                {/* <div className="flex justify-center sm:justify-start gap-4">
-                  {["twitter", "instagram", "linkedin"].map((s) => (
-                    <a
-                      key={s}
-                      href="#"
-                      className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors focus:ring-2 focus:ring-orange-400 focus:outline-none"
-                      aria-label={s}
-                    >
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
-                      </svg>
-                    </a>
-                  ))}
-                </div> */}
+                <div className="flex justify-center sm:justify-start gap-4">
+                  <a
+                    href="#"
+                    className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                    aria-label="Facebook"
+                  >
+                    <FaFacebook className="w-4 h-4 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                    aria-label="Twitter"
+                  >
+                    <FaTwitter className="w-4 h-4 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram className="w-4 h-4 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors focus:ring-2 focus:ring-orange-400 focus:outline-none"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedin className="w-4 h-4 text-white" />
+                  </a>
+                </div>
               </li>
             </ul>
           </div>

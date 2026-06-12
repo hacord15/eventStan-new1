@@ -40,7 +40,6 @@
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/services/6"},"timestamp":1780384820496}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/services"},"timestamp":1780384830142}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/services/4"},"timestamp":1780384880259}
-<<<<<<< HEAD
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780918551818}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/blog"},"timestamp":1780918558125}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/blog"},"timestamp":1780918558126}
@@ -55,7 +54,6 @@
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780988395260}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780988401331}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/blog/stunning-garden-wedding-cape-town"},"timestamp":1780988977614}
-=======
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780987709166}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780987710076}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780987770142}
@@ -77,7 +75,6 @@
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780989707469}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780989722734}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780989734308}
->>>>>>> 329e60b47442442770c46c878c06ae27399e9b77
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780991622170}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780992024511}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1780992262753}
