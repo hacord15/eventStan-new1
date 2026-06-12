@@ -287,7 +287,7 @@ export const REVIEWS: Review[] = [
     service_id: "6",
     reviewer_name: "Priya & Arjun Sharma",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80",
+      "/images/team/team-1.jpg",
     rating: 5,
     comment:
       "EventStan made our dream wedding a reality. Finding our venue and decorator in one place saved us so much stress. The Grand Palace Ballroom was absolutely breathtaking!",
@@ -300,7 +300,7 @@ export const REVIEWS: Review[] = [
     service_id: "2",
     reviewer_name: "James Whitfield",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
+      "/images/team/team-2.jpg",
     rating: 5,
     comment:
       "We hosted our annual company gala through EventStan and the experience was seamless. The vendors were professional, responsive, and delivered beyond expectations.",
@@ -313,7 +313,7 @@ export const REVIEWS: Review[] = [
     service_id: "4",
     reviewer_name: "Sofia Martinez",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
+      "/images/team/team-3.jpg",
     rating: 5,
     comment:
       "From the catering to the entertainment, every detail was perfect. The checkout process was simple and the vendor kept in touch throughout. Highly recommend EventStan!",
@@ -326,7 +326,7 @@ export const REVIEWS: Review[] = [
     service_id: "1",
     reviewer_name: "David & Keiko Chen",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80",
+      "/images/team/team-4.jpg",
     rating: 5,
     comment:
       "The Bloom & Petal decorations team transformed our venue into something magical. Sarah was incredibly professional and creative. Worth every penny!",
@@ -339,7 +339,7 @@ export const REVIEWS: Review[] = [
     service_id: "3",
     reviewer_name: "Fatima Al-Rashid",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80",
+      "/images/team/team-5.jpg",
     rating: 4,
     comment:
       "I found an amazing caterer and decorator within minutes. The package booking flow was super easy. Our guests are still talking about the event three months later!",
@@ -352,7 +352,7 @@ export const REVIEWS: Review[] = [
     service_id: "5",
     reviewer_name: "Marcus Thompson",
     reviewer_avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
+      "/images/team/team-6.jpg",
     rating: 4,
     comment:
       "Great platform for sourcing event vendors quickly. The vendor profiles are detailed and the booking confirmation was fast. Our product launch event was a huge success.",

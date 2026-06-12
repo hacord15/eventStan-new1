@@ -60,7 +60,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "EventStan Editorial",
     read_time: 6,
     image_url:
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=80",
+      "/images/categories/venue.jpg",
     tags: ["wedding", "venues", "trends", "2025"],
     published_at: "2025-03-15",
     is_featured: true,
@@ -83,7 +83,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "EventStan Editorial",
     read_time: 4,
     image_url:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+      "/images/blog/blog-1.jpg",
     tags: ["wedding", "micro-wedding", "trends"],
     published_at: "2025-03-10",
   },
@@ -104,7 +104,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Liam Nkosi",
     read_time: 5,
     image_url:
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80",
+      "/images/blog/blog-2.jpg",
     tags: ["corporate", "planning", "events"],
     published_at: "2025-03-08",
   },
@@ -122,7 +122,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Zanele Dube",
     read_time: 3,
     image_url:
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+      "/images/blog/blog-3.jpg",
     tags: ["real-events", "wedding", "garden"],
     published_at: "2025-03-05",
   },
@@ -143,7 +143,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Aisha Mokoena",
     read_time: 4,
     image_url:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+      "/images/blog/blog-7.jpg",
     tags: ["decor", "trends", "2025"],
     published_at: "2025-03-01",
   },
@@ -164,7 +164,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "EventStan Editorial",
     read_time: 5,
     image_url:
-      "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80",
+      "/images/blog/blog-8.jpg",
     tags: ["catering", "wedding", "food"],
     published_at: "2025-02-25",
   },
