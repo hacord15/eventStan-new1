@@ -218,3 +218,5 @@
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/contact"},"timestamp":1781265964931}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/contact"},"timestamp":1781268257103}
 {"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/contact"},"timestamp":1781268318344}
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/"},"timestamp":1781269131986}
+{"sessionId":"55dc61","runId":"pre-fix","hypothesisId":"H-F2","location":"src/components/ui/Navbar.tsx:Navbar","message":"Navbar mounted (client) — same-origin debug log","data":{"pathname":"/contact"},"timestamp":1781269140145}
